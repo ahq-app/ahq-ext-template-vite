@@ -1,0 +1,31 @@
+// 配色は AHQ が注入する `--ahq-color-*` を使うと、テーマの切り替えに追従する。
+.page {
+  padding: 16px;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--ahq-color-border-strong, currentColor);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--ahq-color-surface-hover, transparent);
+  }
+}
+
+.result {
+  margin: 12px 0 0;
+  color: var(--ahq-color-text-secondary, inherit);
+}

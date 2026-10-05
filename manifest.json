@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "my-extension",
+  "name": "My Extension",
+  "category": "addon",
+  "version": "0.1.0",
+  "description": "AHQ extension template",
+  "views": [
+    {
+      "id": "main",
+      "title": "My Extension",
+      "location": "peek",
+      "entry": "ui/index.html",
+      "icon": "ui/icon.svg",
+      "permissions": ["project.getCurrent"]
+    }
+  ]
+}

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node scripts/dev.mjs",
     "build": "vite build && node scripts/pack.mjs",
+    "deploy": "vite build && node scripts/deploy.mjs",
     "check": "tsc --noEmit"
   },
   "devDependencies": {

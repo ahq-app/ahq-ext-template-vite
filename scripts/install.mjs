@@ -14,7 +14,7 @@ export const AHQ_BIN = process.env.AHQ_BIN ?? 'ahq'
 export async function install(zipPath) {
   let stdout
   try {
-    ;({ stdout } = await execFileAsync(AHQ_BIN, ['extension', 'install', resolve(zipPath), '--overwrite'], {
+    ;({ stdout } = await execFileAsync(AHQ_BIN, ['extension', 'install', resolve(zipPath), '--overwrite', '--json'], {
       maxBuffer: 64 * 1024 * 1024,
     }))
   } catch (error) {

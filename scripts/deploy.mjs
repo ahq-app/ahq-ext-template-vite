@@ -1,7 +1,7 @@
 import { install } from './install.mjs'
 import { pack } from './pack.mjs'
 
-// ビルド済みの `dist/ext` を zip にして AHQ へ上書きインストールする（1 回で終了する）。
+// Zips the built `dist/ext` and overwrite-installs it into AHQ (finishes in one run).
 try {
   await install(pack())
 } catch (error) {

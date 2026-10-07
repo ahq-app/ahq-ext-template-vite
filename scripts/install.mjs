@@ -4,12 +4,12 @@ import { promisify } from 'node:util'
 
 const execFileAsync = promisify(execFile)
 
-// Dev ビルドなど `ahq` が PATH に無い場合は、AHQ_BIN で実行ファイルを指定する。
-// 例: AHQ_BIN="/path/to/ahq.app/Contents/MacOS/ahq" npm run deploy
+// If `ahq` is not on the PATH (for example, with a Dev build), specify the executable with AHQ_BIN.
+// Example: AHQ_BIN="/path/to/ahq.app/Contents/MacOS/ahq" npm run deploy
 export const AHQ_BIN = process.env.AHQ_BIN ?? 'ahq'
 
 /**
- * zip を AHQ にインストール（上書き）し、結果を表示する。失敗時は例外を投げる。
+ * Overwrite-installs the zip into AHQ and prints the result. Throws on failure.
  */
 export async function install(zipPath) {
   let stdout

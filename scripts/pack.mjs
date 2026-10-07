@@ -6,8 +6,8 @@ import { zipSync } from 'fflate'
 const EXT_DIR = 'dist/ext'
 
 /**
- * `dist/ext` を AHQ にインストールできる zip にまとめ、そのパスを返す。
- * ファイル名は AHQ の命名規則 `ahq-<category>-<id>-<version>.zip` に従う。
+ * Zips `dist/ext` into a file that can be installed into AHQ, and returns its path.
+ * The file name follows AHQ's naming rule `ahq-<category>-<id>-<version>.zip`.
  */
 export function pack() {
   const manifest = JSON.parse(readFileSync(join(EXT_DIR, 'manifest.json'), 'utf8'))

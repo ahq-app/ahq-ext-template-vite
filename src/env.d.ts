@@ -5,10 +5,10 @@ declare module '~icons/*?raw' {
   export default svg
 }
 
-/** AHQ が画面（iframe）へ自動で注入する RPC ランタイム。 */
+/** The RPC runtime that AHQ injects into the screen (iframe) automatically. */
 interface Window {
   ahq: {
-    /** `manifest.json` の `permissions` に宣言したメソッドを AHQ 本体に呼び出させる。 */
+    /** Calls a method of AHQ itself that is declared in `permissions` of `manifest.json`. */
     call(method: string, params?: unknown): Promise<unknown>
   }
 }

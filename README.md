@@ -1,40 +1,44 @@
 # ahq-ext-template-vite
 
-AHQ の拡張機能のうち、**Vite でのビルドが必要なもの**（画面付きの拡張など）を、TypeScript / SCSS で作るためのテンプレートです。
+English | [日本語](README.ja.md)
 
-通常は、[ahq-ext-kit](https://github.com/ahq-app/ahq-ext-kit)（仕様書と `AGENTS.md`）の手順に従って、コーディングエージェントが取得します。手動で取得する場合は、次のコマンドを実行します。
+A template for building the kinds of [AHQ](https://github.com/ahq-app/ahq) extensions that **need a Vite build** (for example, extensions with screens) in TypeScript / SCSS.
+
+Usually, a coding agent fetches it by following the instructions in [ahq-ext-kit](https://github.com/ahq-app/ahq-ext-kit) (specifications and `AGENTS.md`). To fetch it by hand, run one of the following commands.
 
 ```sh
-ahq create-extension my-ext --template vite   # my-ext ディレクトリに展開する
-ahq create-extension . --template vite        # 現在のディレクトリに展開する（id はディレクトリ名）
+ahq create-extension my-ext --template vite   # expands into the my-ext directory
+ahq create-extension . --template vite        # expands into the current directory (the id is the directory name)
 ```
 
-## コマンド
+## Commands
 
-| コマンド | 内容 |
+| Command | Description |
 | --- | --- |
-| `npm run deploy` | ビルドして zip にまとめ、AHQ へ上書きインストールする（1 回で終了する） |
-| `npm start` | ウォッチしながらビルドし、保存のたびに AHQ へインストールする |
-| `npm run build` | ビルドして `dist/ahq-addon-<id>-<version>.zip` を作る |
-| `npm run check` | 型チェック |
+| `npm run deploy` | Builds, puts the result in a zip and overwrite-installs it into AHQ (it finishes in one run) |
+| `npm start` | Builds while watching and installs into AHQ on every save |
+| `npm run build` | Builds and creates `dist/ahq-addon-<id>-<version>.zip` |
+| `npm run check` | Type-checks |
 
-`ahq` が PATH に無い場合（Dev ビルドなど）は、`AHQ_BIN` で実行ファイルを指定します。
+If `ahq` is not on your PATH (for example, with a Dev build), specify the executable with `AHQ_BIN`.
 
 ```sh
 AHQ_BIN="/path/to/ahq.app/Contents/MacOS/ahq" npm run deploy
 ```
 
-## 構成
+## Structure
 
-| パス | 内容 |
+| Path | Description |
 | --- | --- |
-| `manifest.json` | 拡張の定義（id・name・views など） |
-| `src/ui/index.html` | 画面の HTML。そのまま同梱される |
-| `src/ui/main.ts` / `style.scss` | 画面のスクリプトとスタイル。1 つの JS / CSS にまとめて出力される |
-| `src/ui/icon.svg` | 画面の呼び出しボタンに使うアイコン |
+| `manifest.json` | The definition of the extension (id, name, views and so on) |
+| `src/ui/index.html` | The HTML of the screen. Bundled as is |
+| `src/ui/main.ts` / `style.scss` | The script and style of the screen. Output as a single JS / CSS file |
+| `src/ui/icon.svg` | The icon used for the button that opens the screen |
 
-## 注意
+## Notes
 
-- JS は 1 つの IIFE にまとめ、通常の `<script>` で読み込みます。AHQ は画面を `allow-same-origin` なしの sandbox iframe で表示するため、`type="module"` のスクリプトは読み込めません。
-- アイコンは [Iconify](https://iconify.design/) が使えます。`npm i -D @iconify-json/<set>` でセットを追加し、`import icon from '~icons/<set>/<name>?raw'` で SVG 文字列として取り込みます（`unplugin-icons`）。
-- `manifest.json` の書き方や、AHQ 本体の機能の呼び方は、ahq-ext-kit の仕様書を参照してください。
+- Bundle the JS into a single IIFE and load it with a normal `<script>`. AHQ displays screens in a sandboxed iframe without `allow-same-origin`, so scripts with `type="module"` cannot be loaded.
+- You can use [Iconify](https://iconify.design/) for icons. Add a set with `npm i -D @iconify-json/<set>` and import it as an SVG string with `import icon from '~icons/<set>/<name>?raw'` (`unplugin-icons`).
+- For how to write `manifest.json` and how to call AHQ's features, see the specifications in [ahq-ext-kit](https://github.com/ahq-app/ahq-ext-kit) (`docs/en/`).
+
+The Japanese version ([日本語](README.ja.md)) is the primary source, and the English version is updated to match it.
